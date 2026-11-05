@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>Rikka.Remote.Quic</RootNamespace>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <MsQuicVersion>2.6.3</MsQuicVersion>
+    <MsQuicPackage>$(NuGetPackageRoot)microsoft.native.quic.msquic.schannel/$(MsQuicVersion)/</MsQuicPackage>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageDownload Include="Microsoft.Native.Quic.MsQuic.Schannel" Version="[$(MsQuicVersion)]" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MsQuicPackage)build/native/bin/x64/msquic.dll" Link="msquic.dll" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+    <None Include="$(MsQuicPackage)LICENSE" Link="licenses/msquic.txt" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Rikka.Remote.Link\Rikka.Remote.Link.csproj" />
+  </ItemGroup>
+</Project>

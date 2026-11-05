@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="remote.back" xml:space="preserve">
+    <value>桌面列表</value>
+  </data>
+  <data name="remote.cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="remote.changed.body" xml:space="preserve">
+    <value>{host} 上的桌面出示了与之前不同的证书。如果它没有重新安装，可能有人正在截取连接。</value>
+  </data>
+  <data name="remote.changed.heading" xml:space="preserve">
+    <value>此桌面的身份已改变</value>
+  </data>
+  <data name="remote.changed.seen" xml:space="preserve">
+    <value>新指纹 {fingerprint}</value>
+  </data>
+  <data name="remote.changed.trust" xml:space="preserve">
+    <value>信任新身份</value>
+  </data>
+  <data name="remote.connecting" xml:space="preserve">
+    <value>正在连接 {host}…</value>
+  </data>
+  <data name="remote.decoder.hardware" xml:space="preserve">
+    <value>硬件解码</value>
+  </data>
+  <data name="remote.decoder.software" xml:space="preserve">
+    <value>软件解码</value>
+  </data>
+  <data name="remote.ended.disconnected" xml:space="preserve">
+    <value>桌面结束了会话。</value>
+  </data>
+  <data name="remote.ended.failed" xml:space="preserve">
+    <value>连接失败：{reason}</value>
+  </data>
+  <data name="remote.ended.replaced" xml:space="preserve">
+    <value>另一个查看器接管了此桌面。</value>
+  </data>
+  <data name="remote.ended.signed-out" xml:space="preserve">
+    <value>已退出登录。</value>
+  </data>
+  <data name="remote.ended.stopped" xml:space="preserve">
+    <value>桌面已停止共享。</value>
+  </data>
+  <data name="remote.ended.unsupported" xml:space="preserve">
+    <value>此桌面使用另一个协议版本。</value>
+  </data>
+  <data name="remote.first-use.body" xml:space="preserve">
+    <value>这是第一次连接 {host}。只有下面的指纹与桌面上显示的一致时才继续。</value>
+  </data>
+  <data name="remote.first-use.heading" xml:space="preserve">
+    <value>信任此桌面？</value>
+  </data>
+  <data name="remote.first-use.seen" xml:space="preserve">
+    <value>指纹 {fingerprint}</value>
+  </data>
+  <data name="remote.first-use.trust" xml:space="preserve">
+    <value>信任并继续</value>
+  </data>
+  <data name="remote.hosts.address" xml:space="preserve">
+    <value>地址</value>
+  </data>
+  <data name="remote.hosts.address-empty" xml:space="preserve">
+    <value>没有输入地址。</value>
+  </data>
+  <data name="remote.hosts.address-name" xml:space="preserve">
+    <value>{text} 不是主机名。</value>
+  </data>
+  <data name="remote.hosts.address-port" xml:space="preserve">
+    <value>{text} 不是端口号。</value>
+  </data>
+  <data name="remote.hosts.connect" xml:space="preserve">
+    <value>连接</value>
+  </data>
+  <data name="remote.hosts.empty" xml:space="preserve">
+    <value>添加允许远程查看器的 Rikka 桌面的地址。</value>
+  </data>
+  <data name="remote.hosts.fingerprint" xml:space="preserve">
+    <value>指纹 {fingerprint}</value>
+  </data>
+  <data name="remote.hosts.forget" xml:space="preserve">
+    <value>移除</value>
+  </data>
+  <data name="remote.hosts.heading" xml:space="preserve">
+    <value>桌面</value>
+  </data>
+  <data name="remote.hosts.licenses" xml:space="preserve">
+    <value>第三方许可证</value>
+  </data>
+  <data name="remote.hosts.new" xml:space="preserve">
+    <value>尚未连接</value>
+  </data>
+  <data name="remote.hosts.placeholder" xml:space="preserve">
+    <value>主机 或 主机:端口</value>
+  </data>
+  <data name="remote.reconnect" xml:space="preserve">
+    <value>重新连接</value>
+  </data>
+  <data name="remote.saved" xml:space="preserve">
+    <value>{name} 已保存到桌面</value>
+  </data>
+  <data name="remote.sign-in.heading" xml:space="preserve">
+    <value>登录 {host}</value>
+  </data>
+  <data name="remote.sign-in.password" xml:space="preserve">
+    <value>{user} 的密码</value>
+  </data>
+  <data name="remote.sign-in.remember" xml:space="preserve">
+    <value>在此设备上保持登录</value>
+  </data>
+  <data name="remote.sign-in.submit" xml:space="preserve">
+    <value>登录</value>
+  </data>
+  <data name="remote.sign-in.throttled" xml:space="preserve">
+    <value>尝试次数过多。请在 {seconds} 秒后重试。</value>
+  </data>
+  <data name="remote.sign-in.unavailable" xml:space="preserve">
+    <value>桌面无法验证密码：{detail}</value>
+  </data>
+  <data name="remote.sign-in.wrong" xml:space="preserve">
+    <value>密码不正确。</value>
+  </data>
+  <data name="remote.statistics.encoder" xml:space="preserve">
+    <value>编码 {fps} fps · 编码耗时 {encode} ms</value>
+  </data>
+  <data name="remote.statistics.local" xml:space="preserve">
+    <value>接收 {received} fps · 解码 {decode} ms · 到屏幕 {display} ms · 帧丢失 {lost}% · {decoder}</value>
+  </data>
+  <data name="remote.statistics.network" xml:space="preserve">
+    <value>目标 {target} Mbps · 估计 {estimate} Mbps · RTT {rtt} ms · 丢失 {loss}% · 保护 {protection}%</value>
+  </data>
+  <data name="remote.statistics.stream" xml:space="preserve">
+    <value>{codec} {width}×{height} {chroma} {depth} 位 · {frames} fps · {encoder}</value>
+  </data>
+  <data name="remote.stats" xml:space="preserve">
+    <value>{codec} {width}×{height} · {megabits} Mbps · {rtt} ms · 丢失 {loss}%</value>
+  </data>
+  <data name="remote.stats-toggle" xml:space="preserve">
+    <value>统计</value>
+  </data>
+  <data name="remote.title" xml:space="preserve">
+    <value>远程桌面</value>
+  </data>
+  <data name="remote.toolbar.ctrl-alt-del" xml:space="preserve">
+    <value>发送 Ctrl+Alt+Del</value>
+  </data>
+  <data name="remote.toolbar.disconnect" xml:space="preserve">
+    <value>断开连接</value>
+  </data>
+  <data name="remote.toolbar.fullscreen" xml:space="preserve">
+    <value>全屏</value>
+  </data>
+  <data name="remote.toolbar.keyframe" xml:space="preserve">
+    <value>刷新画面</value>
+  </data>
+  <data name="remote.toolbar.mouse" xml:space="preserve">
+    <value>捕获鼠标</value>
+  </data>
+  <data name="remote.toolbar.sign-out" xml:space="preserve">
+    <value>退出登录</value>
+  </data>
+  <data name="remote.toolbar.sound" xml:space="preserve">
+    <value>声音</value>
+  </data>
+  <data name="remote.upload-failed" xml:space="preserve">
+    <value>无法发送文件：{reason}</value>
+  </data>
+</root>

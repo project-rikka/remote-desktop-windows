@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="remote.back" xml:space="preserve">
+    <value>Desktops</value>
+  </data>
+  <data name="remote.cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="remote.changed.body" xml:space="preserve">
+    <value>The desktop at {host} presents another certificate than before. If it was not reinstalled, someone may be intercepting the connection.</value>
+  </data>
+  <data name="remote.changed.heading" xml:space="preserve">
+    <value>This desktop's identity changed</value>
+  </data>
+  <data name="remote.changed.seen" xml:space="preserve">
+    <value>New fingerprint {fingerprint}</value>
+  </data>
+  <data name="remote.changed.trust" xml:space="preserve">
+    <value>Trust the new identity</value>
+  </data>
+  <data name="remote.connecting" xml:space="preserve">
+    <value>Connecting to {host}…</value>
+  </data>
+  <data name="remote.decoder.hardware" xml:space="preserve">
+    <value>hardware decoding</value>
+  </data>
+  <data name="remote.decoder.software" xml:space="preserve">
+    <value>software decoding</value>
+  </data>
+  <data name="remote.ended.disconnected" xml:space="preserve">
+    <value>The desktop ended the session.</value>
+  </data>
+  <data name="remote.ended.failed" xml:space="preserve">
+    <value>The connection failed: {reason}</value>
+  </data>
+  <data name="remote.ended.replaced" xml:space="preserve">
+    <value>Another viewer took over this desktop.</value>
+  </data>
+  <data name="remote.ended.signed-out" xml:space="preserve">
+    <value>Signed out.</value>
+  </data>
+  <data name="remote.ended.stopped" xml:space="preserve">
+    <value>The desktop stopped sharing.</value>
+  </data>
+  <data name="remote.ended.unsupported" xml:space="preserve">
+    <value>This desktop speaks another protocol version.</value>
+  </data>
+  <data name="remote.first-use.body" xml:space="preserve">
+    <value>This is the first connection to {host}. Continue only if the fingerprint below matches the one the desktop shows.</value>
+  </data>
+  <data name="remote.first-use.heading" xml:space="preserve">
+    <value>Trust this desktop?</value>
+  </data>
+  <data name="remote.first-use.seen" xml:space="preserve">
+    <value>Fingerprint {fingerprint}</value>
+  </data>
+  <data name="remote.first-use.trust" xml:space="preserve">
+    <value>Trust and continue</value>
+  </data>
+  <data name="remote.hosts.address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="remote.hosts.address-empty" xml:space="preserve">
+    <value>No address was given.</value>
+  </data>
+  <data name="remote.hosts.address-name" xml:space="preserve">
+    <value>{text} is not a host name.</value>
+  </data>
+  <data name="remote.hosts.address-port" xml:space="preserve">
+    <value>{text} is not a port number.</value>
+  </data>
+  <data name="remote.hosts.connect" xml:space="preserve">
+    <value>Connect</value>
+  </data>
+  <data name="remote.hosts.empty" xml:space="preserve">
+    <value>Add the address of a Rikka desktop that allows remote viewers.</value>
+  </data>
+  <data name="remote.hosts.fingerprint" xml:space="preserve">
+    <value>Fingerprint {fingerprint}</value>
+  </data>
+  <data name="remote.hosts.forget" xml:space="preserve">
+    <value>Forget</value>
+  </data>
+  <data name="remote.hosts.heading" xml:space="preserve">
+    <value>Desktops</value>
+  </data>
+  <data name="remote.hosts.licenses" xml:space="preserve">
+    <value>Third-party licenses</value>
+  </data>
+  <data name="remote.hosts.new" xml:space="preserve">
+    <value>Not connected yet</value>
+  </data>
+  <data name="remote.hosts.placeholder" xml:space="preserve">
+    <value>host or host:port</value>
+  </data>
+  <data name="remote.reconnect" xml:space="preserve">
+    <value>Reconnect</value>
+  </data>
+  <data name="remote.saved" xml:space="preserve">
+    <value>{name} was saved on the desktop</value>
+  </data>
+  <data name="remote.sign-in.heading" xml:space="preserve">
+    <value>Sign in to {host}</value>
+  </data>
+  <data name="remote.sign-in.password" xml:space="preserve">
+    <value>Password of {user}</value>
+  </data>
+  <data name="remote.sign-in.remember" xml:space="preserve">
+    <value>Stay signed in on this device</value>
+  </data>
+  <data name="remote.sign-in.submit" xml:space="preserve">
+    <value>Sign in</value>
+  </data>
+  <data name="remote.sign-in.throttled" xml:space="preserve">
+    <value>Too many attempts. Try again in {seconds} s.</value>
+  </data>
+  <data name="remote.sign-in.unavailable" xml:space="preserve">
+    <value>The desktop cannot check passwords: {detail}</value>
+  </data>
+  <data name="remote.sign-in.wrong" xml:space="preserve">
+    <value>The password was not accepted.</value>
+  </data>
+  <data name="remote.statistics.encoder" xml:space="preserve">
+    <value>Encoded at {fps} fps · encode {encode} ms</value>
+  </data>
+  <data name="remote.statistics.local" xml:space="preserve">
+    <value>Received {received} fps · decode {decode} ms · to screen {display} ms · frames lost {lost}% · {decoder}</value>
+  </data>
+  <data name="remote.statistics.network" xml:space="preserve">
+    <value>Target {target} Mbps · estimate {estimate} Mbps · RTT {rtt} ms · loss {loss}% · protection {protection}%</value>
+  </data>
+  <data name="remote.statistics.stream" xml:space="preserve">
+    <value>{codec} {width}×{height} {chroma} {depth}-bit · {frames} fps · {encoder}</value>
+  </data>
+  <data name="remote.stats" xml:space="preserve">
+    <value>{codec} {width}×{height} · {megabits} Mbps · {rtt} ms · {loss}% lost</value>
+  </data>
+  <data name="remote.stats-toggle" xml:space="preserve">
+    <value>Statistics</value>
+  </data>
+  <data name="remote.title" xml:space="preserve">
+    <value>Remote Desktop</value>
+  </data>
+  <data name="remote.toolbar.ctrl-alt-del" xml:space="preserve">
+    <value>Send Ctrl+Alt+Del</value>
+  </data>
+  <data name="remote.toolbar.disconnect" xml:space="preserve">
+    <value>Disconnect</value>
+  </data>
+  <data name="remote.toolbar.fullscreen" xml:space="preserve">
+    <value>Full screen</value>
+  </data>
+  <data name="remote.toolbar.keyframe" xml:space="preserve">
+    <value>Refresh the picture</value>
+  </data>
+  <data name="remote.toolbar.mouse" xml:space="preserve">
+    <value>Capture the mouse</value>
+  </data>
+  <data name="remote.toolbar.sign-out" xml:space="preserve">
+    <value>Sign out</value>
+  </data>
+  <data name="remote.toolbar.sound" xml:space="preserve">
+    <value>Sound</value>
+  </data>
+  <data name="remote.upload-failed" xml:space="preserve">
+    <value>Cannot send a file: {reason}</value>
+  </data>
+</root>

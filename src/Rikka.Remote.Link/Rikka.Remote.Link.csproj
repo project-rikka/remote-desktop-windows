@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>Rikka.Remote.Link</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Rikka.Remote.Wire\Rikka.Remote.Wire.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="Rikka.Remote.Viewer.Views.TrustPanel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <StackPanel Width="480" Spacing="12" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <VisualStateManager.VisualStateGroups>
+      <VisualStateGroup x:Name="Kinds">
+        <VisualState x:Name="FirstUse">
+          <VisualState.Setters>
+            <Setter Target="Heading.Foreground" Value="{ThemeResource TextFillColorPrimaryBrush}" />
+            <Setter Target="TrustButton.Style" Value="{StaticResource AccentButtonStyle}" />
+          </VisualState.Setters>
+        </VisualState>
+        <VisualState x:Name="Changed">
+          <VisualState.Setters>
+            <Setter Target="Heading.Foreground" Value="{ThemeResource SystemFillColorCautionBrush}" />
+            <Setter Target="TrustButton.Style" Value="{StaticResource DefaultButtonStyle}" />
+          </VisualState.Setters>
+        </VisualState>
+      </VisualStateGroup>
+    </VisualStateManager.VisualStateGroups>
+    <TextBlock x:Name="Heading" Style="{StaticResource TitleTextBlockStyle}" TextWrapping="Wrap" />
+    <TextBlock x:Name="Body" TextWrapping="Wrap" />
+    <TextBlock x:Name="Fingerprint" FontFamily="Cascadia Mono, Consolas" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="Wrap" IsTextSelectionEnabled="True" />
+    <StackPanel Orientation="Horizontal" Spacing="8">
+      <Button x:Name="CancelButton" Click="OnCancel" />
+      <Button x:Name="TrustButton" Click="OnTrust" />
+    </StackPanel>
+  </StackPanel>
+</UserControl>

@@ -1,0 +1,113 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.22000.0</TargetPlatformMinVersion>
+    <SupportedOSPlatformVersion>10.0.22000.0</SupportedOSPlatformVersion>
+    <RootNamespace>Rikka.Remote.Viewer</RootNamespace>
+    <AssemblyName>rikka-remote-viewer</AssemblyName>
+    <AssemblyTitle>Rikka Remote Viewer</AssemblyTitle>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <UseWinUI>true</UseWinUI>
+    <WindowsPackageType>None</WindowsPackageType>
+    <EnableMsixTooling>true</EnableMsixTooling>
+    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+    <SelfContained>true</SelfContained>
+    <ServicedRuntimeVersion>10.0.14</ServicedRuntimeVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <CsWin32RunAsBuildTask>true</CsWin32RunAsBuildTask>
+    <DisableRuntimeMarshalling>true</DisableRuntimeMarshalling>
+    <PublishAot>true</PublishAot>
+    <PublishTrimmed>true</PublishTrimmed>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <RepositoryRoot>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\..\'))</RepositoryRoot>
+    <FfmpegBuild>ffmpeg-n8.1.3-34-ga35157abb9-win64-lgpl-shared-8.1</FfmpegBuild>
+    <FfmpegUrl>https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-2026-11-04-12-51/$(FfmpegBuild).zip</FfmpegUrl>
+    <FfmpegSha256>1B32A03BCC71E7DB008484060DD1F5734369B14E4F5FEA88368E96BE35B7288D</FfmpegSha256>
+    <OpusBuild>opus-1.6.1</OpusBuild>
+    <OpusUrl>https://downloads.xiph.org/releases/opus/$(OpusBuild).tar.gz</OpusUrl>
+    <OpusSha256>6FFCB593207BE92584DF15B32466ED64BBEC99109F007C82205F0194572411A1</OpusSha256>
+    <NativeRoot>$(RepositoryRoot)artifacts\native\</NativeRoot>
+    <NativeStamp>$(NativeRoot)bin\$(FfmpegBuild).$(OpusBuild).stamp</NativeStamp>
+    <WindowsKitsRoot>$([MSBuild]::GetRegistryValueFromView('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Kits\Installed Roots', 'KitsRoot10', null, RegistryView.Registry32, RegistryView.Default))</WindowsKitsRoot>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.WindowsAppSDK" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" />
+    <PackageReference Include="Microsoft.Windows.CsWin32" PrivateAssets="all" />
+  </ItemGroup>
+  <ItemGroup>
+    <KnownFrameworkReference Update="Microsoft.NETCore.App" LatestRuntimeFrameworkVersion="$(ServicedRuntimeVersion)" />
+    <KnownRuntimePack Update="Microsoft.NETCore.App" LatestRuntimeFrameworkVersion="$(ServicedRuntimeVersion)" />
+    <KnownILCompilerPack Update="Microsoft.DotNet.ILCompiler" ILCompilerPackVersion="$(ServicedRuntimeVersion)" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Rikka.Remote.Quic\Rikka.Remote.Quic.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="NativeMethods.txt" />
+    <AdditionalFiles Include="NativeMethods.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Shader Include="Video\Shaders\Picture.hlsl" Entry="VertexMain" Profile="vs_5_0" ShaderName="PictureVertex" />
+    <Shader Include="Video\Shaders\Picture.hlsl" Entry="TwoPlaneMain" Profile="ps_5_0" ShaderName="PictureTwoPlane" />
+    <Shader Include="Video\Shaders\Picture.hlsl" Entry="ThreePlaneMain" Profile="ps_5_0" ShaderName="PictureThreePlane" />
+    <Shader Include="Video\Shaders\Sprite.hlsl" Entry="VertexMain" Profile="vs_5_0" ShaderName="SpriteVertex" />
+    <Shader Include="Video\Shaders\Sprite.hlsl" Entry="PixelMain" Profile="ps_5_0" ShaderName="SpritePixel" />
+    <None Remove="Video\Shaders\*.hlsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(NativeRoot)bin\avcodec-62.dll" Link="avcodec-62.dll" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+    <None Include="$(NativeRoot)bin\avutil-60.dll" Link="avutil-60.dll" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+    <None Include="$(NativeRoot)bin\swresample-6.dll" Link="swresample-6.dll" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+    <None Include="$(NativeRoot)bin\opus.dll" Link="opus.dll" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+    <None Include="$(NativeRoot)bin\licenses\ffmpeg.txt" Link="licenses\ffmpeg.txt" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+    <None Include="$(NativeRoot)bin\licenses\opus.txt" Link="licenses\opus.txt" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+    <None Include="$(RepositoryRoot)THIRD-PARTY-NOTICES.md" Link="licenses\THIRD-PARTY-NOTICES.md" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+  </ItemGroup>
+  <Target Name="RestoreNative" BeforeTargets="BeforeBuild" Condition="!Exists('$(NativeStamp)')">
+    <PropertyGroup>
+      <NativeDownloads>$(NativeRoot)downloads</NativeDownloads>
+      <NativeWork>$(NativeRoot)work</NativeWork>
+      <OpusBuildDirectory>$(NativeWork)\opus-build</OpusBuildDirectory>
+      <Vswhere>$(MSBuildProgramFiles32)\Microsoft Visual Studio\Installer\vswhere.exe</Vswhere>
+    </PropertyGroup>
+    <DownloadFile SourceUrl="$(FfmpegUrl)" DestinationFolder="$(NativeDownloads)" Retries="3" />
+    <VerifyFileHash File="$(NativeDownloads)\$(FfmpegBuild).zip" Algorithm="SHA256" Hash="$(FfmpegSha256)" />
+    <Unzip SourceFiles="$(NativeDownloads)\$(FfmpegBuild).zip" DestinationFolder="$(NativeWork)" />
+    <ItemGroup>
+      <FfmpegLibrary Include="$(NativeWork)\$(FfmpegBuild)\bin\avcodec-62.dll;$(NativeWork)\$(FfmpegBuild)\bin\avutil-60.dll;$(NativeWork)\$(FfmpegBuild)\bin\swresample-6.dll" />
+    </ItemGroup>
+    <Copy SourceFiles="@(FfmpegLibrary)" DestinationFolder="$(NativeRoot)bin" />
+    <Copy SourceFiles="$(NativeWork)\$(FfmpegBuild)\LICENSE.txt" DestinationFiles="$(NativeRoot)bin\licenses\ffmpeg.txt" />
+    <DownloadFile SourceUrl="$(OpusUrl)" DestinationFolder="$(NativeDownloads)" Retries="3" />
+    <VerifyFileHash File="$(NativeDownloads)\$(OpusBuild).tar.gz" Algorithm="SHA256" Hash="$(OpusSha256)" />
+    <Exec Command="&quot;$(SystemRoot)\System32\tar.exe&quot; -xzf &quot;$(NativeDownloads)\$(OpusBuild).tar.gz&quot; -C &quot;$(NativeWork)&quot;" IgnoreStandardErrorWarningFormat="true" />
+    <Error Condition="!Exists('$(Vswhere)')" Text="Visual Studio with the C++ workload is required to build libopus." />
+    <Exec Command="&quot;$(Vswhere)&quot; -latest -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath" IgnoreStandardErrorWarningFormat="true" ConsoleToMSBuild="true" StandardOutputImportance="low">
+      <Output TaskParameter="ConsoleOutput" PropertyName="VisualStudioRoot" />
+    </Exec>
+    <Error Condition="'$(VisualStudioRoot)' == ''" Text="Visual Studio with the C++ workload is required to build libopus." />
+    <PropertyGroup>
+      <CMake>$(VisualStudioRoot)\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe</CMake>
+    </PropertyGroup>
+    <Exec Command="&quot;$(CMake)&quot; -S &quot;$(NativeWork)\$(OpusBuild)&quot; -B &quot;$(OpusBuildDirectory)&quot; -A x64 -DBUILD_SHARED_LIBS=ON -DOPUS_BUILD_PROGRAMS=OFF -DOPUS_BUILD_TESTING=OFF -DOPUS_INSTALL_PKG_CONFIG_MODULE=OFF -DOPUS_INSTALL_CMAKE_CONFIG_MODULE=OFF" IgnoreStandardErrorWarningFormat="true" />
+    <Exec Command="&quot;$(CMake)&quot; --build &quot;$(OpusBuildDirectory)&quot; --config Release --parallel" IgnoreStandardErrorWarningFormat="true" />
+    <Copy SourceFiles="$(OpusBuildDirectory)\Release\opus.dll" DestinationFolder="$(NativeRoot)bin" />
+    <Copy SourceFiles="$(NativeWork)\$(OpusBuild)\COPYING" DestinationFiles="$(NativeRoot)bin\licenses\opus.txt" />
+    <Touch Files="$(NativeStamp)" AlwaysCreate="true" />
+  </Target>
+  <Target Name="CompileShaders" BeforeTargets="BeforeBuild" Inputs="@(Shader)" Outputs="@(Shader->'$(IntermediateOutputPath)Shaders\%(ShaderName).cso')">
+    <PropertyGroup>
+      <FxcPath>$(WindowsKitsRoot)bin\$(TargetPlatformVersion)\x64\fxc.exe</FxcPath>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(FxcPath)')" Text="fxc.exe was not found at $(FxcPath); install the Windows SDK $(TargetPlatformVersion)." />
+    <MakeDir Directories="$(IntermediateOutputPath)Shaders" />
+    <Exec Command="&quot;$(FxcPath)&quot; /nologo /O3 /WX /Qstrip_debug /Qstrip_reflect /T %(Shader.Profile) /E %(Shader.Entry) /Fo &quot;$(IntermediateOutputPath)Shaders\%(Shader.ShaderName).cso&quot; &quot;%(Shader.FullPath)&quot;" />
+  </Target>
+  <Target Name="EmbedShaders" AfterTargets="CompileShaders" BeforeTargets="BeforeBuild">
+    <ItemGroup>
+      <EmbeddedResource Include="@(Shader->'$(IntermediateOutputPath)Shaders\%(ShaderName).cso')" LogicalName="Shaders.%(ShaderName)" />
+    </ItemGroup>
+  </Target>
+</Project>

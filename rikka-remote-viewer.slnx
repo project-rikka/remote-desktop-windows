@@ -1,0 +1,15 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+  </Configurations>
+  <Folder Name="/src/">
+    <Project Path="src/Rikka.Remote.Wire/Rikka.Remote.Wire.csproj" />
+    <Project Path="src/Rikka.Remote.Link/Rikka.Remote.Link.csproj" />
+    <Project Path="src/Rikka.Remote.Quic/Rikka.Remote.Quic.csproj" />
+    <Project Path="src/Rikka.Remote.Viewer/Rikka.Remote.Viewer.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Rikka.Remote.Wire.Tests/Rikka.Remote.Wire.Tests.csproj" />
+    <Project Path="tests/Rikka.Remote.Link.Tests/Rikka.Remote.Link.Tests.csproj" />
+  </Folder>
+</Solution>

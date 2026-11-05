@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="Rikka.Remote.Viewer.Views.HostsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ScrollViewer>
+    <StackPanel MaxWidth="520" Margin="24,32,24,24" Spacing="12" HorizontalAlignment="Stretch">
+      <TextBlock x:Name="Heading" Style="{StaticResource TitleTextBlockStyle}" />
+      <Grid ColumnSpacing="8">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="Address" KeyDown="OnAddressKey" TextChanged="OnAddressChanged" />
+        <Button x:Name="ConnectButton" Grid.Column="1" Style="{StaticResource AccentButtonStyle}" IsEnabled="False" Click="OnConnect" />
+      </Grid>
+      <TextBlock x:Name="Problem" Foreground="{ThemeResource SystemFillColorCriticalBrush}" TextWrapping="Wrap" Visibility="Collapsed" Style="{StaticResource CaptionTextBlockStyle}" />
+      <TextBlock x:Name="Empty" TextWrapping="Wrap" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+      <StackPanel x:Name="List" Spacing="4" />
+      <HyperlinkButton x:Name="Licenses" Padding="0" Margin="0,16,0,0" Click="OnLicenses" />
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

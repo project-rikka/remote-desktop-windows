@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="remote.back" xml:space="preserve">
+    <value>デスクトップ一覧</value>
+  </data>
+  <data name="remote.cancel" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="remote.changed.body" xml:space="preserve">
+    <value>{host} のデスクトップが以前と違う証明書を提示しています。再インストールしていないなら、通信が傍受されているおそれがあります。</value>
+  </data>
+  <data name="remote.changed.heading" xml:space="preserve">
+    <value>このデスクトップの識別情報が変わりました</value>
+  </data>
+  <data name="remote.changed.seen" xml:space="preserve">
+    <value>新しい指紋 {fingerprint}</value>
+  </data>
+  <data name="remote.changed.trust" xml:space="preserve">
+    <value>新しい識別情報を信頼する</value>
+  </data>
+  <data name="remote.connecting" xml:space="preserve">
+    <value>{host} に接続しています…</value>
+  </data>
+  <data name="remote.decoder.hardware" xml:space="preserve">
+    <value>ハードウェアデコード</value>
+  </data>
+  <data name="remote.decoder.software" xml:space="preserve">
+    <value>ソフトウェアデコード</value>
+  </data>
+  <data name="remote.ended.disconnected" xml:space="preserve">
+    <value>デスクトップがセッションを終了しました。</value>
+  </data>
+  <data name="remote.ended.failed" xml:space="preserve">
+    <value>接続に失敗しました: {reason}</value>
+  </data>
+  <data name="remote.ended.replaced" xml:space="preserve">
+    <value>別のビューアーがこのデスクトップに接続しました。</value>
+  </data>
+  <data name="remote.ended.signed-out" xml:space="preserve">
+    <value>サインアウトしました。</value>
+  </data>
+  <data name="remote.ended.stopped" xml:space="preserve">
+    <value>デスクトップが共有を停止しました。</value>
+  </data>
+  <data name="remote.ended.unsupported" xml:space="preserve">
+    <value>このデスクトップは別のプロトコルバージョンを使っています。</value>
+  </data>
+  <data name="remote.first-use.body" xml:space="preserve">
+    <value>{host} への初めての接続です。下の指紋がデスクトップに表示されているものと一致するときだけ続けてください。</value>
+  </data>
+  <data name="remote.first-use.heading" xml:space="preserve">
+    <value>このデスクトップを信頼しますか</value>
+  </data>
+  <data name="remote.first-use.seen" xml:space="preserve">
+    <value>指紋 {fingerprint}</value>
+  </data>
+  <data name="remote.first-use.trust" xml:space="preserve">
+    <value>信頼して続ける</value>
+  </data>
+  <data name="remote.hosts.address" xml:space="preserve">
+    <value>アドレス</value>
+  </data>
+  <data name="remote.hosts.address-empty" xml:space="preserve">
+    <value>アドレスが入力されていません。</value>
+  </data>
+  <data name="remote.hosts.address-name" xml:space="preserve">
+    <value>{text} はホスト名ではありません。</value>
+  </data>
+  <data name="remote.hosts.address-port" xml:space="preserve">
+    <value>{text} はポート番号ではありません。</value>
+  </data>
+  <data name="remote.hosts.connect" xml:space="preserve">
+    <value>接続</value>
+  </data>
+  <data name="remote.hosts.empty" xml:space="preserve">
+    <value>リモート接続を許可した Rikka デスクトップのアドレスを追加してください。</value>
+  </data>
+  <data name="remote.hosts.fingerprint" xml:space="preserve">
+    <value>指紋 {fingerprint}</value>
+  </data>
+  <data name="remote.hosts.forget" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="remote.hosts.heading" xml:space="preserve">
+    <value>デスクトップ</value>
+  </data>
+  <data name="remote.hosts.licenses" xml:space="preserve">
+    <value>サードパーティのライセンス</value>
+  </data>
+  <data name="remote.hosts.new" xml:space="preserve">
+    <value>未接続</value>
+  </data>
+  <data name="remote.hosts.placeholder" xml:space="preserve">
+    <value>ホスト名 または ホスト名:ポート</value>
+  </data>
+  <data name="remote.reconnect" xml:space="preserve">
+    <value>再接続</value>
+  </data>
+  <data name="remote.saved" xml:space="preserve">
+    <value>{name} をデスクトップに保存しました</value>
+  </data>
+  <data name="remote.sign-in.heading" xml:space="preserve">
+    <value>{host} にサインイン</value>
+  </data>
+  <data name="remote.sign-in.password" xml:space="preserve">
+    <value>{user} のパスワード</value>
+  </data>
+  <data name="remote.sign-in.remember" xml:space="preserve">
+    <value>この端末でサインインしたままにする</value>
+  </data>
+  <data name="remote.sign-in.submit" xml:space="preserve">
+    <value>サインイン</value>
+  </data>
+  <data name="remote.sign-in.throttled" xml:space="preserve">
+    <value>試行回数が多すぎます。{seconds} 秒後にもう一度試してください。</value>
+  </data>
+  <data name="remote.sign-in.unavailable" xml:space="preserve">
+    <value>デスクトップでパスワードを確認できません: {detail}</value>
+  </data>
+  <data name="remote.sign-in.wrong" xml:space="preserve">
+    <value>パスワードが違います。</value>
+  </data>
+  <data name="remote.statistics.encoder" xml:space="preserve">
+    <value>エンコード {fps} fps · エンコード時間 {encode} ms</value>
+  </data>
+  <data name="remote.statistics.local" xml:space="preserve">
+    <value>受信 {received} fps · デコード {decode} ms · 表示まで {display} ms · フレーム欠損 {lost}% · {decoder}</value>
+  </data>
+  <data name="remote.statistics.network" xml:space="preserve">
+    <value>目標 {target} Mbps · 推定 {estimate} Mbps · RTT {rtt} ms · 損失 {loss}% · 保護 {protection}%</value>
+  </data>
+  <data name="remote.statistics.stream" xml:space="preserve">
+    <value>{codec} {width}×{height} {chroma} {depth} bit · {frames} fps · {encoder}</value>
+  </data>
+  <data name="remote.stats" xml:space="preserve">
+    <value>{codec} {width}×{height} · {megabits} Mbps · {rtt} ms · 損失 {loss}%</value>
+  </data>
+  <data name="remote.stats-toggle" xml:space="preserve">
+    <value>統計</value>
+  </data>
+  <data name="remote.title" xml:space="preserve">
+    <value>リモートデスクトップ</value>
+  </data>
+  <data name="remote.toolbar.ctrl-alt-del" xml:space="preserve">
+    <value>Ctrl+Alt+Del を送る</value>
+  </data>
+  <data name="remote.toolbar.disconnect" xml:space="preserve">
+    <value>切断</value>
+  </data>
+  <data name="remote.toolbar.fullscreen" xml:space="preserve">
+    <value>全画面</value>
+  </data>
+  <data name="remote.toolbar.keyframe" xml:space="preserve">
+    <value>画面を更新</value>
+  </data>
+  <data name="remote.toolbar.mouse" xml:space="preserve">
+    <value>マウスを捕捉</value>
+  </data>
+  <data name="remote.toolbar.sign-out" xml:space="preserve">
+    <value>サインアウト</value>
+  </data>
+  <data name="remote.toolbar.sound" xml:space="preserve">
+    <value>音声</value>
+  </data>
+  <data name="remote.upload-failed" xml:space="preserve">
+    <value>ファイルを送れません: {reason}</value>
+  </data>
+</root>

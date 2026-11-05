@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="Rikka.Remote.Viewer.Views.HostRow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Grid ColumnSpacing="12" Padding="12,8" CornerRadius="{StaticResource ControlCornerRadius}" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="*" />
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="Auto" />
+    </Grid.ColumnDefinitions>
+    <FontIcon Glyph="&#xE7F4;" Foreground="{ThemeResource TextFillColorSecondaryBrush}" VerticalAlignment="Center" />
+    <StackPanel Grid.Column="1" Spacing="2" VerticalAlignment="Center">
+      <TextBlock x:Name="HostName" Style="{StaticResource BodyStrongTextBlockStyle}" TextTrimming="CharacterEllipsis" />
+      <TextBlock x:Name="Detail" Style="{StaticResource CaptionTextBlockStyle}" Foreground="{ThemeResource TextFillColorSecondaryBrush}" TextTrimming="CharacterEllipsis" />
+    </StackPanel>
+    <Button x:Name="ForgetButton" Grid.Column="2" Style="{StaticResource SubtleButtonStyle}" Click="OnForget" />
+    <Button x:Name="ConnectButton" Grid.Column="3" Click="OnConnect" />
+  </Grid>
+</UserControl>
