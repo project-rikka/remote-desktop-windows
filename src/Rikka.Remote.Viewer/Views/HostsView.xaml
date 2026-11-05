@@ -12,7 +12,7 @@
           <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
         <TextBox x:Name="Address" KeyDown="OnAddressKey" TextChanged="OnAddressChanged" />
-        <Button x:Name="ConnectButton" Grid.Column="1" Style="{StaticResource AccentButtonStyle}" IsEnabled="False" Click="OnConnect" />
+        <Button x:Name="ConnectButton" Grid.Column="1" VerticalAlignment="Bottom" Style="{StaticResource AccentButtonStyle}" IsEnabled="False" Click="OnConnect" />
       </Grid>
       <TextBlock x:Name="Problem" Foreground="{ThemeResource SystemFillColorCriticalBrush}" TextWrapping="Wrap" Visibility="Collapsed" Style="{StaticResource CaptionTextBlockStyle}" />
       <TextBlock x:Name="Empty" TextWrapping="Wrap" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
