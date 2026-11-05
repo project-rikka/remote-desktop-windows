@@ -19,7 +19,10 @@
     <DisableRuntimeMarshalling>true</DisableRuntimeMarshalling>
     <PublishAot>true</PublishAot>
     <PublishTrimmed>true</PublishTrimmed>
+    <PublishDocumentationFiles>false</PublishDocumentationFiles>
+    <CopyOutputSymbolsToPublishDirectory>false</CopyOutputSymbolsToPublishDirectory>
     <DefaultLanguage>en-US</DefaultLanguage>
+    <WindowsAppSDKResourceLanguages>en-US;ja-JP;zh-CN</WindowsAppSDKResourceLanguages>
     <RepositoryRoot>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\..\'))</RepositoryRoot>
     <FfmpegBuild>ffmpeg-n8.1.3-34-ga35157abb9-win64-lgpl-shared-8.1</FfmpegBuild>
     <FfmpegUrl>https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-2026-11-04-12-51/$(FfmpegBuild).zip</FfmpegUrl>
@@ -32,7 +35,8 @@
     <WindowsKitsRoot>$([MSBuild]::GetRegistryValueFromView('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Kits\Installed Roots', 'KitsRoot10', null, RegistryView.Registry32, RegistryView.Default))</WindowsKitsRoot>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.WindowsAppSDK" />
+    <PackageReference Include="Microsoft.WindowsAppSDK.Foundation" />
+    <PackageReference Include="Microsoft.WindowsAppSDK.WinUI" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" />
     <PackageReference Include="Microsoft.Windows.CsWin32" PrivateAssets="all" />
   </ItemGroup>
@@ -108,6 +112,21 @@
   <Target Name="EmbedShaders" AfterTargets="CompileShaders" BeforeTargets="BeforeBuild">
     <ItemGroup>
       <EmbeddedResource Include="@(Shader->'$(IntermediateOutputPath)Shaders\%(ShaderName).cso')" LogicalName="Shaders.%(ShaderName)" />
+    </ItemGroup>
+  </Target>
+  <Target Name="RemoveUnusedWindowsAppSDKLanguages" AfterTargets="AddMicrosoftWindowsAppSDKPayloadFilesFromComponents">
+    <PropertyGroup>
+      <_KeptWindowsAppSDKLanguages>;$(WindowsAppSDKResourceLanguages.ToLowerInvariant());</_KeptWindowsAppSDKLanguages>
+    </PropertyGroup>
+    <ItemGroup>
+      <_UnusedWindowsAppSDKLanguageFile Include="@(None->WithMetadataValue('Extension', '.mui'))" />
+      <_UnusedWindowsAppSDKLanguageFile Remove="@(_UnusedWindowsAppSDKLanguageFile)" Condition="$(_KeptWindowsAppSDKLanguages.Contains(`;$([System.IO.Path]::GetDirectoryName(`%(Link)`).ToLowerInvariant());`))" />
+      <None Remove="@(_UnusedWindowsAppSDKLanguageFile)" />
+    </ItemGroup>
+  </Target>
+  <Target Name="RemoveManagedSymbolsFromPublish" AfterTargets="ComputeResolvedFilesToPublishList">
+    <ItemGroup>
+      <ResolvedFileToPublish Remove="@(ResolvedFileToPublish->WithMetadataValue('Extension', '.pdb'))" />
     </ItemGroup>
   </Target>
 </Project>

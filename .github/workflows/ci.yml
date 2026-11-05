@@ -1,0 +1,91 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  SOLUTION: rikka-remote-viewer.slnx
+  VIEWER_PROJECT: src/Rikka.Remote.Viewer/Rikka.Remote.Viewer.csproj
+  PUBLISH_DIR: artifacts/publish/rikka-remote-viewer
+  NATIVE_SYMBOLS: artifacts/bin/Rikka.Remote.Viewer/release_win-x64/native/rikka-remote-viewer.pdb
+
+jobs:
+  build:
+    name: Build, test and publish (win-x64)
+    runs-on: windows-2025
+    timeout-minutes: 60
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - name: Check out
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73 # v6.1.0
+        with:
+          global-json-file: global.json
+          cache: true
+          cache-dependency-path: '**/packages.lock.json'
+
+      - name: Describe build
+        id: describe
+        run: |
+          $properties = (dotnet msbuild $env:VIEWER_PROJECT -getProperty:Version -getProperty:NativeStamp | ConvertFrom-Json).Properties
+          $revision = $env:GITHUB_SHA.Substring(0, 7)
+          "name=rikka-remote-viewer-$($properties.Version)-$revision-win-x64" >> $env:GITHUB_OUTPUT
+          "native=$([IO.Path]::GetFileNameWithoutExtension($properties.NativeStamp))" >> $env:GITHUB_OUTPUT
+
+      - name: Cache native libraries
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: artifacts/native/bin
+          key: native-win-x64-${{ steps.describe.outputs.native }}
+
+      - name: Restore
+        run: dotnet restore $env:SOLUTION
+
+      - name: Build
+        run: dotnet build $env:SOLUTION --configuration Release --no-restore
+
+      - name: Test
+        run: dotnet test --solution $env:SOLUTION --configuration Release --no-build --report-xunit-trx --results-directory artifacts/test-results
+
+      - name: Upload test results
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: test-results
+          path: artifacts/test-results
+          if-no-files-found: warn
+
+      - name: Publish
+        run: dotnet publish $env:VIEWER_PROJECT --configuration Release --no-restore --output $env:PUBLISH_DIR
+
+      - name: Upload application
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: ${{ steps.describe.outputs.name }}
+          path: ${{ env.PUBLISH_DIR }}
+          if-no-files-found: error
+
+      - name: Upload symbols
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: ${{ steps.describe.outputs.name }}-symbols
+          path: ${{ env.NATIVE_SYMBOLS }}
+          if-no-files-found: error
