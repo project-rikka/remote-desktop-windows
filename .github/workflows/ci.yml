@@ -63,10 +63,11 @@ jobs:
         run: dotnet build $env:SOLUTION --configuration Release --no-restore
 
       - name: Test
+        id: test
         run: dotnet test --solution $env:SOLUTION --configuration Release --no-build --report-xunit-trx --results-directory artifacts/test-results
 
       - name: Upload test results
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && steps.test.outcome != 'skipped' }}
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: test-results

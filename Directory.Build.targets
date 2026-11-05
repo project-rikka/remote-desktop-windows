@@ -1,0 +1,8 @@
+<Project>
+  <ItemGroup>
+    <KnownFrameworkReference Update="Microsoft.NETCore.App" LatestRuntimeFrameworkVersion="$(ServicedRuntimeVersion)" />
+    <KnownRuntimePack Update="Microsoft.NETCore.App" LatestRuntimeFrameworkVersion="$(ServicedRuntimeVersion)" />
+    <KnownILCompilerPack Update="Microsoft.DotNet.ILCompiler" ILCompilerPackVersion="$(ServicedRuntimeVersion)" />
+    <KnownILLinkPack Update="Microsoft.NET.ILLink.Tasks" ILLinkPackVersion="$(ServicedRuntimeVersion)" />
+  </ItemGroup>
+</Project>
